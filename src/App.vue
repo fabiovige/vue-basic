@@ -1,32 +1,25 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import Menu from '@/components/Menu.vue'
-</script>
-
 <template>
-  <div id="menu">
-    <Menu></Menu>
-  </div>
-  
-  <RouterView />
+  <h1>App</h1>
+  <Header></Header>
+  <button @click="funcao"> Add </button>
+  {{ count }}
+  <Footer></Footer>
 </template>
 
-<style scoped>
-#app{
-    border:3px solid #666;
-    padding:20px;
-    margin: auto;
-    width: 700px;
-}
+<script setup>
 
-#menu {
-  border:3px solid #cdcdcd;
-    padding:10px;
-    margin: auto;
-    width: 900px;
-}
+  import {ref} from "vue";
+  import Footer from '@/components/Footer.vue'
+  import Header from '@/components/Header.vue'
 
-h2 {
-    color: red;
-}
+  const count = ref(0);
+
+  function funcao() {
+    count.value++
+  }
+
+</script>
+
+
+<style>
 </style>
