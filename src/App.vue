@@ -14,7 +14,7 @@
   <button @click="count++"> Add </button>
   {{ count }}
 
-  <h3>Profile</h3>
+  <h3>Profile ok</h3>
   <ul>
     <li v-for="(value, key) in user" key="{{ key }}">{{ key }} - {{ value }}</li>
   </ul>
@@ -26,6 +26,13 @@
     <template v-for="(user) in users" :key="user.id">
       <li v-if="user.is_admin === 1">{{ user.firstName }} - {{ user.age }}</li>
     </template>
+  </ul>
+
+  <h3>Invoices list</h3>
+  <ul>
+    <li v-for="invoice in invoices.data" :key="invoice.id">
+      {{invoice.id}} {{invoice.user.firstName}} {{invoice.type}} {{invoice.paid}} {{invoice.value}}
+    </li>
   </ul>
 
   <RouterView />
@@ -41,6 +48,7 @@ import {onUpdated, onMounted, ref, reactive} from "vue";
   import Menu from '@/components/Menu.vue'
   import Footer from '@/components/Footer.vue'
   import Header from '@/components/Header.vue'
+  import Http from "./services/Http";
 
   const count = ref(0);
   const showHeader = ref(false);
@@ -87,9 +95,16 @@ import {onUpdated, onMounted, ref, reactive} from "vue";
     },
   ]);
 
-  onMounted(() => {
-      console.log("onMounted");
-      console.log('count ' + count.value);
+  let invoices = reactive({data:[]});
+
+  onMounted(async () => {
+    try {
+      const {data} = await Http.get('/invoices');
+      console.log(data);
+      invoices.data = data.data;
+    } catch (e) {
+      console.log(e);
+    }
   })
 
   onUpdated(()=>{
