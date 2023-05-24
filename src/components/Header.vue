@@ -1,11 +1,18 @@
 <template>
-  <h2>Header ok</h2>
+  <h2>Header</h2>
 </template>
 
-<script>
-export default {
-    name: "Header"
-}
+<script setup>
+import {onMounted, onUnmounted} from "vue";
+
+onUnmounted(()=>{
+    console.log('header desmontado')
+})
+
+onMounted(()=>{
+    console.log('header montado')
+})
+
 </script>
 
 <style>

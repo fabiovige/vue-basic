@@ -1,7 +1,18 @@
-<script>
-export default {
-  name: 'Invoices'
-}
+<script setup>
+import {onMounted, onUnmounted, onUpdated} from "vue";
+
+onMounted(()=>{
+    console.log('monta componente invoice')
+})
+
+onUnmounted(()=>{
+    console.log('desmonta componente invoice')
+})
+
+onUpdated(()=>{
+    console.log('atualiza um componente no invoice')
+})
+
 </script>
 
 <template>
