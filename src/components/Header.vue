@@ -1,5 +1,5 @@
 <template>
-  <h2>Header</h2>
+  <h1>A5Maker Atualizado</h1>
 </template>
 
 <script setup>
