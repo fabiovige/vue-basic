@@ -19,7 +19,7 @@
 <script setup>
 import {reactive} from "vue";
 import Http from "@/services/Http";
-import {UseAuthStore} from "@/stores/UseAuthStore";
+import {UseAuthStore} from "../stores/UseAuthStore";
 
 const auth = UseAuthStore();
 
@@ -39,7 +39,3 @@ async function login() {
   }
 }
 </script>
-
-<style scoped>
-
-</style>
